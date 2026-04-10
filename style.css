@@ -72,6 +72,22 @@ html {
     color: var(--accent-neon);
 }
 
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+    z-index: 1000;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-main);
+    transition: all 0.3s ease-in-out;
+    border-radius: 3px;
+}
+
 .nav-links {
     list-style: none;
     display: flex;
@@ -475,41 +491,148 @@ html {
 
 /* Responsive Overrides */
 @media (max-width: 768px) {
+    /* Navbar Mobile Fix (Hamburger Menu) */
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 15px 5%;
+        background: rgba(7, 5, 5, 0.95);
+    }
+    .logo {
+        font-size: 1.3rem; 
+    }
+    .menu-toggle {
+        display: flex;
+    }
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 5, 0, 0.98);
+        border-bottom: 2px solid rgba(255, 102, 0, 0.2);
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out, padding 0.4s;
+        gap: 0;
+    }
+    .nav-links.active {
+        max-height: 350px;
+        padding: 20px 0;
+    }
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+    }
+    .nav-links a {
+        font-size: 0.9rem;
+        display: block;
+        letter-spacing: 2px;
+    }
+
+    /* Hamburger Animation */
+    .menu-toggle.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.is-active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+        background-color: var(--accent-neon);
+    }
+    .menu-toggle.is-active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+        background-color: var(--accent-neon);
+    }
+
+    /* Hero Section Mobile */
+    .hero {
+        padding: 0 5%;
+        text-align: center;
+        justify-content: center;
+    }
+    .sub-heading {
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+        margin-bottom: 10px;
+    }
     .main-heading {
         font-size: 3rem;
+        margin-bottom: 20px;
+    }
+    .hero-content .description {
+        font-size: 1rem;
+        margin: 0 auto 30px;
+    }
+    .btn {
+        padding: 15px 30px;
+        font-size: 0.8rem;
     }
 
+    /* Ticker */
+    .ticker__item {
+        font-size: 1rem;
+    }
+
+    /* Section Headers */
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    .section-header p {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+    }
+    
+    .exp-header h2 {
+        font-size: 2rem;
+    }
+
+    /* Founders Section Slider */
     .founderSwiper {
-        padding: 160px 15px 80px;
+        padding: 130px 10px 40px;
     }
-
     .founder-slide {
-        padding: 30px 20px;
+        padding: 20px 15px;
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
+        border-radius: 20px;
     }
-
     .founder-img {
-        max-height: 40vh;
+        max-height: 25vh;
         width: auto;
-        max-width: 100%;
+        margin: 0 auto;
+        border-radius: 15px;
     }
-
     .founder-info {
-        padding: 30px;
+        padding: 10px 10px;
         width: 100%;
-        margin-bottom: 0px;
+        text-align: center;
     }
-
     .founder-info .name {
-        font-size: 1.8rem;
+        font-size: 1.25rem;
+    }
+    .founder-info .role {
+        font-size: 0.75rem;
+        margin-bottom: 15px;
+    }
+    .spec-item {
+        font-size: 0.85rem;
+    }
+    .ig-link {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 0.75rem;
     }
 
-    .contact-box h2 {
-        font-size: 2.5rem;
-    }
-
+    /* Experience Gallery */
     .gallery-slide {
-        width: 90%;
+        width: 85%;
+        height: 85%;
+    }
+    .exp-caption {
+        font-size: 1.2rem;
+        padding: 20px 15px 15px;
     }
 }

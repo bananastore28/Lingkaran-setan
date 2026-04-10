@@ -8,6 +8,8 @@ AOS.init({
 // Navbar background change on scroll within the scroll container
 const mainContent = document.querySelector('.main-content');
 const navbar = document.querySelector('.navbar');
+const menuToggle = document.querySelector('#mobile-menu');
+const navLinks = document.querySelector('.nav-links');
 
 mainContent.addEventListener('scroll', () => {
     if (mainContent.scrollTop > 50) {
@@ -15,6 +17,20 @@ mainContent.addEventListener('scroll', () => {
     } else {
         navbar.classList.remove('scrolled');
     }
+});
+
+// Mobile menu toggle
+menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('is-active');
+    navLinks.classList.toggle('active');
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        menuToggle.classList.remove('is-active');
+        navLinks.classList.remove('active');
+    });
 });
 
 // Initialize Swiper (Founders Parallax Slider)
